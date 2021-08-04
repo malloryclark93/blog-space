@@ -4,11 +4,12 @@ fetch('https://apis.scrimba.com/jsonplaceholder/posts')
     let posts = data.slice(0, 4)
     // console.log(posts)
     let text = ''
-    
+
     for(let post of posts){
       text += `
-        <h2>${post.title}</h2>
+        <h3>${post.title}</h3>
         <p>${post.body}</p>
+        <hr />
         `
     }
     console.log(posts)
