@@ -27,8 +27,21 @@ document.getElementById('new-post').addEventListener('submit', function(e){
     title: postTitle,
     body : postBody
   }
+    
+  fetch('https://apis.scrimba.com/jsonplaceholder/posts', {
+      method: "POST",
+      body: JSON.stringify(data),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+      
+    })
+    .then(response => response.json())
+    .then(data => console.log(data))
+  
 
-  console.log(data)
-})
+  })
+
+
 
 // 'text' could be a coding error
