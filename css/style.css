@@ -25,11 +25,13 @@ h1 {
 	text-transform: uppercase;
   text-decoration: none;
 	background: #FA7D09;
-	padding: 10px;
+	padding: 10px 10px;
 	border-radius: 5px;
 	display: inline-block;
 	border: none;
-	transition: all 0.4s ease 0s;
+  transition: all 0.4s ease 0s;
+  font-size: 20px;
+  cursor: pointer;
 }
 
 #post-button:hover {
@@ -40,4 +42,18 @@ h1 {
     box-shadow: 5px 40px -10px rgba(0,0,0,0.57);
     transition: all 0.4s ease 0s;
   
+}
+
+form {
+  display: grid;
+  padding: 60px 10px 10px;
+  /* display: flex;
+  flex-direction: column;
+  width: 300px;
+  margin: 10px auto; */
+  /* border: solid orangered; */
+}
+
+input#post-title, textarea#post-text {
+  padding-bottom: 10px;
 }
