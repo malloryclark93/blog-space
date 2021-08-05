@@ -37,9 +37,15 @@ document.getElementById('new-post').addEventListener('submit', function(e){
       
     })
     .then(response => response.json())
-    .then(data => console.log(data))
-  
-
+    .then(post => {
+      document.getElementById('blog-container').innerHTML += 
+      // `${post.title}${post.body}`
+      `
+          <h3>${post.title}</h3>
+          <p>${post.body}</p>
+          <hr />
+          ` 
+    })
   })
 
 
