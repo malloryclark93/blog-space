@@ -1,21 +1,39 @@
-fetch('https://apis.scrimba.com/jsonplaceholder/posts')
-  .then(response => response.json())
-  .then(data => {
-    let posts = data.slice(0, 4)
-    // console.log(posts)
-    let text = ''
+let postsArray = []
 
-    for(let post of posts){
+function renderPosts(){
+  let text = ''
+    for(let post of postsArray){
       text += `
         <h3>${post.title}</h3>
         <p>${post.body}</p>
         <hr />
         `
     }
-    console.log(posts)
     document.getElementById('blog-container').innerHTML = text
 
+  }
+
+fetch('https://apis.scrimba.com/jsonplaceholder/posts')
+  .then(response => response.json())
+  .then(data => {
+    postsArray = data.slice(0, 4)
+    renderPosts()
   })
+  
+    // console.log(posts)
+  //   let text = ''
+
+  //   for(let post of posts){
+  //     text += `
+  //       <h3>${post.title}</h3>
+  //       <p>${post.body}</p>
+  //       <hr />
+  //       `
+  //   }
+  //   console.log(posts)
+  //   document.getElementById('blog-container').innerHTML = text
+
+  // })
  
 document.getElementById('new-post').addEventListener('submit', function(e){
     e.preventDefault()
@@ -38,14 +56,17 @@ document.getElementById('new-post').addEventListener('submit', function(e){
     })
     .then(response => response.json())
     .then(post => {
-      document.getElementById('blog-container').innerHTML = 
-      // `${post.title}${post.body}`
-      `
-          <h3>${post.title}</h3>
-          <p>${post.body}</p>
-          <hr />
-          ${document.getElementById('blog-container').innerHTML}
-          ` 
+      postsArray.unshift(post)
+      renderPosts()
+
+      // document.getElementById('blog-container').innerHTML = 
+      // // `${post.title}${post.body}`
+      // `
+      //     <h3>${post.title}</h3>
+      //     <p>${post.body}</p>
+      //     <hr />
+      //     ${document.getElementById('blog-container').innerHTML}
+      //     ` 
     })
   })
 
